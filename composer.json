@@ -3,6 +3,7 @@
     "description": "Query String Organized Search: A format to facilitate CRUD search through the use of URL query strings.",
     "type": "library",
     "require-dev": {
+	"php": ">=7.0.0",
         "phpunit/phpunit": "^6.2"
     },
     "license": "MIT",
