@@ -12,7 +12,8 @@
             "email": "kurt.ma.coll@gmail.com"
         }
     ],
-    "minimum-stability": "beta",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {},
 	
 	"autoload": {
