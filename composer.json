@@ -1,0 +1,24 @@
+{
+    "name": "makoru-hikage/quesos",
+    "description": "Query String Organized Search: A format to facilitate CRUD search through the use of URL query strings.",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "makoru-hikage",
+            "email": "kurt.ma.coll@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {},
+	
+	"autoload": {
+        "psr-4": {
+            "Quesos\\": "src/Quesos"
+        }
+    }
+
+}
