@@ -24,6 +24,9 @@ This is for web API developers. Just learn the fundamentals of HTTP and web deve
 (If you can port or have ported this to another language that can be used for HTTP, please notify me. You are encouraged to port this.)
 
 Here's a primer for you should you have no idea: http://www.restapitutorial.com/
+
+### How to use?
+[Click here](docs/usage.md)
 ___
 ### What are Query Strings?
 Query String is the part of a URL that is usually started with a question mark (?) and a pair of key-values which is usually sent to a server for the sake of options, result filtering, or even redirection. And the key-value pairs are separated by ampersands (&). Between key and value is a simple equal operator (=).
