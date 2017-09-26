@@ -62,7 +62,7 @@ That is the situation where you must design an API resource that requires a GET 
 (For me, a POST request with Request Body that contains the search criteria is disgusting. POST must be only used when an end user wants to really add something inside a server such as a new account)
 
 Two things to consider:
-1. Using GET method means that a must not change anything in the server ([RFC 2616, Section-4.3](https://tools.ietf.org/html/rfc2616#section-9.3))
+1. Using GET method means that a user must not change anything in the server ([RFC 2616, Section-4.3](https://tools.ietf.org/html/rfc2616#section-9.3))
 2. Having a non-empty Request Body implies that a user wishes to change something inside the server.([RFC 2616, Section-4.3](https://tools.ietf.org/html/rfc2616#section-4.3))
 
 Although the standards and specification is written, the implementor (API developer) can violate the standards, for they are merely standards. However, such standards are of a great help if followed.
