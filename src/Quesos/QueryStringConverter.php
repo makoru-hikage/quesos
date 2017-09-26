@@ -118,9 +118,13 @@ class QueryStringConverter {
 				$operator = self::getOperatorInQueryValue($value);
 				$value = self::getValueInQueryValue($value);
 			}
-
+			
 			// Should the value be a string that can be a number, convert it.
 			$value = is_numeric($value) ? $value + 0 : $value;
+			
+			//If there was no operator from the start 
+			//and the value turns out to be an array
+			$operator = is_array($value) ? 'in' : '=';
 
 			//"sort" is a special item in a search filter and it is always
 			//an array. If your need says otherwise, it's up to you.
