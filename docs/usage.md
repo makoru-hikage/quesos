@@ -36,6 +36,7 @@ if ($_SERVER['QUERY_STRING']) {
 `$request->query();`
 ##### Others
 The point is RTFM OF WHATEVER FRAMEWORK YOU ARE USING for each of them has feature for parsing query strings.
+___
 
 ### I have the means to parse the query string... What should be input?
 It should look like this:
@@ -45,6 +46,7 @@ and it'll be transformed like this:
 (The absence of `operator` just means "equal to")
 
 There are various situations to deal with. There could be mere search by a unique identifier (`username = "christina_moran"`), comparison against a number (`casino_player_age >= 21`), range of values (`yr_lvl between [2,3]`), or a set of values (`women in ["Aida", "Lorna", "Fe"]`)
+___
 
 #### Simplest criterion
 "I want to search a guy with a username 'clito_reyes69'"
@@ -54,6 +56,7 @@ There are various situations to deal with. There could be mere search by a uniqu
 which will result in a following value
 
 `"username" => [ "username", "=", "clito_reyes69" ]`
+___
 
 #### Negated simplest criterion
 "I want to search students whose status are not 'EXPELLED'"
@@ -63,6 +66,7 @@ which will result in a following value
 which will result in a following value
 
 `"student_status" => [ "student_status", "!=", "EXPELLED" ]`
+___
 
 #### Involvement of Comparative Operators.
 Comparative operators are `>, <, >=, <=, !=, and =`. Usually good when dealing with numbers. Respectively, `gt, lt, gte, lte, eq, and ne` when they'll be in a query string.
@@ -74,6 +78,7 @@ Comparative operators are `>, <, >=, <=, !=, and =`. Usually good when dealing w
 which will result in a following value
 
 `"age" => [ "age", "<", "18" ]`
+___
 
 #### The Value is actually an array
 There'll be time that your input for a single attribute is an array. This program automatically use `in` instead.
@@ -88,6 +93,7 @@ which will result in a following value
 `"first_name" => [ "first_name", "in", [ "Kanor", "Hayden", "Chito", "Wally", "Paolo"] ]`
 
 To have to opposite, just put `nin` for `not in`.
+___
 
 #### Range of numbers
 It can be 1 to N or A to Z, none of my business. The value must be an array of two elements: the high and low, or low and high, whatever.
@@ -101,6 +107,7 @@ which will result in a following value
 `"grade_level" => [ "grade_level", "between", [ 11,12 ] ]`
 
 To have to opposite, just put `nbwn` for `not between`.
+___
 
 #### LIKE operator
 A special kind of operator. See MySQL LIKE operator for more details.
@@ -115,6 +122,7 @@ which will result in a following value
 
 To have to opposite, just put `nlike` for `not like`.
 (Sorry for not having support for regex yet. Please do any workaround)
+___
 
 ### With all that fuss, What shall I do now?
 Just call the class statically, no need for instantiating it. Just copy-paste the snippet to a fresh empty `index.php` in a folder and `cd` to that folder and run `php -S localhost:3000 -t './'` for a mini server to test with your browser to test my tool.
@@ -137,6 +145,7 @@ if ($_SERVER['QUERY_STRING']) {
 $o = QueryStringConverter::convert($parsedQueryString);
 echo json_encode($o, JSON_PRETTY_PRINT);
 ```
+___
 
 ### Does this work on my framework or my ORM?
 Yes, as long as it is PHP. This thing is framework-agnostic and has no dependency. What you do with the output is none of my business, although it can help you. For example. I have this search criteria (Don't expect to understand this if you are not a Laravel user):
