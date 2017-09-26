@@ -9,7 +9,9 @@ This is designed for the development of web APIs that has a filtered search feat
 For example, I am searching something in a student database for a students who completed their 2nd year (`yr_lvl >= 2`). Instead of writing `yr_lvl=>=2`* or `yr_lvl=%3E3D2`** in the query string itself, I'll just do `yr_lvl=gte,2`*** which is perfectly legal.
 
 \* Comparison operators like ">", "<", etc.  are declared unsafe and are automatically escaped by some browsers or servers. Also, `=` is a reserved character.
+
 \** You like memorizing ASCII and their hex form? And also, it looks gibberish to see escaped URL string beside a digit.
+
 \*** It's easy to read and perfectly legal since it is legal to contain comma in a query value. `gte` is intuitive.
 
 ___
