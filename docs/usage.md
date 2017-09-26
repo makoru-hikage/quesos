@@ -46,53 +46,71 @@ and it'll be transformed like this:
 
 There are various situations to deal with. There could be mere search by a unique identifier (`username = "christina_moran"`), comparison against a number (`casino_player_age >= 21`), range of values (`yr_lvl between [2,3]`), or a set of values (`women in ["Aida", "Lorna", "Fe"]`)
 
-##### Simplest criterion
+#### Simplest criterion
 "I want to search a guy with a username 'clito_reyes69'"
+
 `yoursite.com/profile/?username=clito_reyes69` or `yoursite.com?username=eq,clito_reyes69`
+
 which will result in a following value
+
 `"username" => [ "username", "=", "clito_reyes69" ]`
 
-##### Negated simplest criterion
+#### Negated simplest criterion
 "I want to search students whose status are not 'EXPELLED'"
+
 `yoursite.com/students/?student_status=ne,EXPELLED`
+
 which will result in a following value
+
 `"student_status" => [ "student_status", "!=", "EXPELLED" ]`
 
-##### Involvement of Comparative Operators.
+#### Involvement of Comparative Operators.
 Comparative operators are `>, <, >=, <=, !=, and =`. Usually good when dealing with numbers. Respectively, `gt, lt, gte, lte, eq, and ne` when they'll be in a query string.
 
 "Students under 18 require parent's waiver for the field trip."
+
 `yoursite.com/students/?age=lt,18`
+
 which will result in a following value
+
 `"age" => [ "age", "<", "18" ]`
 
-##### The Value is actually an array
+#### The Value is actually an array
 There'll be time that your input for a single attribute is an array. This program automatically use `in` instead.
 
 "I want these men: Kanor, Hayden, Chito, Wally, Paolo"
+
 `yoursite.com/idols/?first_name=Kanor,Hayden,Chito,Wally,Paolo` or
 `yoursite.com/idols/?first_name=in,Kanor,Hayden,Chito,Wally,Paolo`
+
 which will result in a following value
+
 `"first_name" => [ "first_name", "in", [ "Kanor", "Hayden", "Chito", "Wally", "Paolo"] ]`
 
 To have to opposite, just put `nin` for `not in`.
 
-##### Range of numbers
+#### Range of numbers
 It can be 1 to N or A to Z, none of my business. The value must be an array of two elements: the high and low, or low and high, whatever.
 
 "I want students who are full of potentials, students of Grade 11 and 12"
+
 `yoursite.com/students/?grade_level=bwn,11,12`
+
 which will result in a following value
+
 `"grade_level" => [ "grade_level", "between", [ 11,12 ] ]`
 
 To have to opposite, just put `nbwn` for `not between`.
 
-##### LIKE operator
+#### LIKE operator
 A special kind of operator. See MySQL LIKE operator for more details.
 
 "I want people with '-maru' at the end of their name"
+
 `yoursite.com/users/?first_name=like,%25maru`
+
 which will result in a following value
+
 `"first_name" => [ "first_name", "like", %maru ]`
 
 To have to opposite, just put `nlike` for `not like`.
