@@ -22,7 +22,7 @@ class QueryStringConverter {
         'bwn' => 'between',
         'nbwn' => 'not between',
         'in' => 'in',
-        'nin' => 'nin'
+        'nin' => 'not in'
     ];
 
 	/**

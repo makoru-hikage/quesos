@@ -21,7 +21,7 @@ class ConversionTest extends TestCase {
 
 	}
 
-	public function testAllComparativeOperators() {
+	public function testComparativeOperators() {
 
 		$convertedValue = QueryStringConverter::convert([
 			"first_name" => "Christina", 
@@ -40,7 +40,7 @@ class ConversionTest extends TestCase {
 
 	}
 
-	public function testAllBetweenOperators() {
+	public function testBetweenOperators() {
 
 		$convertedValue = QueryStringConverter::convert([ 
 			"age" => "bwn,18,25",
@@ -51,6 +51,23 @@ class ConversionTest extends TestCase {
 		$expectedValue = [
 			"age" => ["age", "between", [18,25]],
 			"year_level" => ["year_level", "not between", [3,4]],
+		];
+
+		$this->assertEquals($convertedValue, $expectedValue);
+
+	}
+
+	public function testInOperators() {
+
+		$convertedValue = QueryStringConverter::convert([ 
+			"first_name" => "Kanor,Hayden,Chito,Wally,Paolo",
+			"writer_surname" => "Poe,King,Inah,Moe"
+
+		]);
+
+		$expectedValue = [
+			"first_name" => [ "first_name", "in", [ "Kanor", "Hayden", "Chito", "Wally", "Paolo"] ],
+			"writer_surname" => [ "writer_surname", "in", [ "Poe", "King", "Inah", "Moe" ] ],
 		];
 
 		$this->assertEquals($convertedValue, $expectedValue);
