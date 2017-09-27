@@ -3,7 +3,7 @@ Query String Organized Search: A format to facilitate CRUD search through the us
 
 Please read the docs: [the introduction](docs/intro.md) and [the usage](docs/usage.md)
 
-##Summary...
+## Summary...
 
 1. Receive an HTTP GET request laden with query string.
 ```
