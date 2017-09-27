@@ -49,7 +49,7 @@ Array
     [points] => Array
         (
             [0] => points
-            [1] => <
+            [1] => >
             [2] => 9000
         )
 
