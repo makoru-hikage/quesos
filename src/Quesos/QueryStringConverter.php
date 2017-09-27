@@ -110,7 +110,7 @@ class QueryStringConverter {
 			$value = self::convertToArrayValue($queryValue);
 
 			//The default operator: it shall not be changed unless
-			//the value turns out to be an array whose first element
+			//the query value turns out to be an array whose first element
 			//corresponds to a key in VALID_OPERATORS
 			$operator = '=';			
 
@@ -122,9 +122,9 @@ class QueryStringConverter {
 			// Should the value be a string that can be a number, convert it.
 			$value = is_numeric($value) ? $value + 0 : $value;
 			
-			//If there was no operator from the start 
+			//If the operator is still default  
 			//and the value turns out to be an array
-			$operator = is_array($value) ? 'in' : '=';
+			$operator = is_array($value) && $operator === '=' ? 'in' : $operator;
 
 			//"sort" is a special item in a search filter and it is always
 			//an array. If your need says otherwise, it's up to you.
