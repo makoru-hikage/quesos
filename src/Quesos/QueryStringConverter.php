@@ -12,8 +12,8 @@ class QueryStringConverter {
 	 */
 	const VALID_OPERATORS = [
         'eq' => '=', 
-        'gt' => '<', 
-        'lt' => '>', 
+        'gt' => '>', 
+        'lt' => '<', 
         'gte' => '>=', 
         'lte' => '<=', 
         'ne' => '!=',
