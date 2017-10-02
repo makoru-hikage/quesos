@@ -18,11 +18,10 @@
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require": {},
 	
 	"autoload": {
         "psr-4": {
-            "Quesos\\": "src/Quesos"
+            "DeltaX\\Quesos\\": "src/Quesos"
         }
     }
 

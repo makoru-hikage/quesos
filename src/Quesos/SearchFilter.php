@@ -1,9 +1,8 @@
 <?php
 
-namespace Quesos;
+namespace DeltaX\Quesos;
 
-use Quesos\SearchFilterItem;
-use Quesos\Exceptions\NullItemException;
+use DeltaX\Quesos\SearchFilterItem;
 
 class SearchFilter {
 

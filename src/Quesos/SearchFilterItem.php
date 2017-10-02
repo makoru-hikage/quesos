@@ -1,6 +1,6 @@
 <?php
 
-namespace Quesos;
+namespace DeltaX\Quesos;
 
 
 class SearchFilterItem {

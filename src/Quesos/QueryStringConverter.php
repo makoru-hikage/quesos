@@ -1,8 +1,8 @@
 <?php
 
-namespace Quesos;
+namespace DeltaX\Quesos;
 
-use Quesos\SearchFilter;
+use DeltaX\Quesos\SearchFilter;
 
 class QueryStringConverter {
 
