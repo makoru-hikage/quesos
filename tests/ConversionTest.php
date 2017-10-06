@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Quesos\QueryStringConverter;
+use DeltaX\Quesos\QueryStringConverter;
 
 class ConversionTest extends TestCase {
 

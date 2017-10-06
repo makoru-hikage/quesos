@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Quesos\SearchFilter;
-use Quesos\SearchFilterItem;
+use DeltaX\Quesos\SearchFilter;
+use DeltaX\Quesos\SearchFilterItem;
 
 class SearchFilterTest extends TestCase {
 
