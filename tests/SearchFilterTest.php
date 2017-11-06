@@ -16,9 +16,9 @@ class SearchFilterTest extends TestCase {
 
 		$input = $this->exampleArray;
 
-    	$filter = new SearchFilter($input);
+    		$filter = new SearchFilter($input);
 
-        $this->assertEquals($filter->toArray(), array_values($input));
+		$this->assertEquals($filter->toArray(), array_values($input));
        
 	}
 
@@ -26,15 +26,15 @@ class SearchFilterTest extends TestCase {
 
 		$input = [
 			new SearchFilterItem("sex", "=", "male"),
-    		new SearchFilterItem("points", ">", "9000"),
-    		new SearchFilterItem( "first_name", "in", [ "Kanor", "Hayden", "Chito", "Wally", "Paolo"] )
-    	];
+    			new SearchFilterItem("points", ">", "9000"),
+    			new SearchFilterItem( "first_name", "in", [ "Kanor", "Hayden", "Chito", "Wally", "Paolo"] )
+    		];
 
-    	$expectedArray = $this->exampleArray;
+    		$expectedArray = $this->exampleArray;
 
-    	$filter = new SearchFilter($input);
+    		$filter = new SearchFilter($input);
     	
-        $this->assertEquals($filter->toArray(), array_values($expectedArray));
+        	$this->assertEquals($filter->toArray(), array_values($expectedArray));
        
 	}
 
