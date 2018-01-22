@@ -35,7 +35,7 @@ if ($_SERVER['QUERY_STRING']) {
 ##### Laravel
 `$request->query();`
 ##### Others
-The point is RTFM OF WHATEVER FRAMEWORK YOU ARE USING for each of them has feature for parsing query strings.
+The point is RTM OF WHATEVER FRAMEWORK YOU ARE USING for each of them has feature for parsing query strings.
 ___
 
 ### I have the means to parse the query string... What should be input?
