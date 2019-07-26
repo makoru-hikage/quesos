@@ -92,7 +92,7 @@ which will result in a following value
 
 `"first_name" => [ "first_name", "in", [ "Kanor", "Hayden", "Chito", "Wally", "Paolo"] ]`
 
-To have to opposite, just put `nin` for `not in`.
+To have the opposite, just put `nin` for `not in`.
 ___
 
 #### Range of numbers
