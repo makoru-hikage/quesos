@@ -106,7 +106,7 @@ which will result in a following value
 
 `"grade_level" => [ "grade_level", "between", [ 11,12 ] ]`
 
-To have to opposite, just put `nbwn` for `not between`.
+To have the opposite, just put `nbwn` for `not between`.
 ___
 
 #### LIKE operator
@@ -120,7 +120,7 @@ which will result in a following value
 
 `"first_name" => [ "first_name", "like", %maru ]`
 
-To have to opposite, just put `nlike` for `not like`.
+To have the opposite, just put `nlike` for `not like`.
 (Sorry for not having support for regex yet. Please do any workaround)
 ___
 
