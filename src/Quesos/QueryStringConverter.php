@@ -115,8 +115,9 @@ class QueryStringConverter {
 	 * 
 	 * @return array
 	 */
-	public static function convert(array $parsedQueryString){
+	public static function convert(){
 
+		$parsedQueryString = $this->parsedQueryString;
 		$searchFilterItems = [];
 
 		foreach ($parsedQueryString as $key => $queryValue) {
