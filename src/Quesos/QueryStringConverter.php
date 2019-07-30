@@ -23,7 +23,7 @@ class QueryStringConverter {
         'nbwn' => 'not between',
         'in' => 'in',
         'nin' => 'not in'
-    ];
+	];
 
 	/**
 	 * @var array $parsedQueryString
@@ -45,7 +45,7 @@ class QueryStringConverter {
 	 * Convert a string with comma into an array.
 	 * If the input is "1,2", the output is [1, 2]
 	 * Should there be no comma. Nothing happens
-	 * 
+	 *
 	 * @param  string $value 
 	 * @return array|mixed
 	 */
@@ -66,7 +66,7 @@ class QueryStringConverter {
 
 	/**
 	 * Extracts the first operator in a refined Query Value
-	 * 
+	 *
 	 * @param  array  $value 
 	 * @return string
 	 */
@@ -85,13 +85,13 @@ class QueryStringConverter {
 	/**
 	 * Extracts the attribute value in a refined Query Value
 	 * 
-	 * @param  array  $value
-	 * @return mixed       
+	 * @param  array $value
+	 * @return mixed
 	 */
 	protected static function getValueInQueryValue(array $value){
 
 		//Should the first element of an item belong to
-		//VALID_OPERATORS... 
+		//VALID_OPERATORS...
 		if (array_key_exists($value[0], static::VALID_OPERATORS)) {
 
 			$value = array_slice($value, 1);
@@ -128,7 +128,7 @@ class QueryStringConverter {
 			//The default operator: it shall not be changed unless
 			//the query value turns out to be an array whose first element
 			//corresponds to a key in VALID_OPERATORS
-			$operator = '=';			
+			$operator = '=';
 
 			if ( is_array($value) ) {
 				$operator = self::getOperatorInQueryValue($value);
@@ -138,7 +138,7 @@ class QueryStringConverter {
 			// Should the value be a string that can be a number, convert it.
 			$value = is_numeric($value) ? $value + 0 : $value;
 			
-			//If the operator is still default  
+			//If the operator is still default
 			//and the value turns out to be an array
 			$operator = is_array($value) && $operator === '=' ? 'in' : $operator;
 
