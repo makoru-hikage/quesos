@@ -142,8 +142,8 @@ if ($_SERVER['QUERY_STRING']) {
 	parse_str($_SERVER['QUERY_STRING'], $parsedQueryString);
 }
 
-$o = QueryStringConverter::convert($parsedQueryString);
-echo json_encode($o, JSON_PRETTY_PRINT);
+$o = new QueryStringConverter($parsedQueryString);
+echo json_encode($o->convert(), JSON_PRETTY_PRINT);
 ```
 ___
 
