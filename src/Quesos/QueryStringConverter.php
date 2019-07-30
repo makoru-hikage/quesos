@@ -23,13 +23,29 @@ class QueryStringConverter {
         'nbwn' => 'not between',
         'in' => 'in',
         'nin' => 'not in'
-    ];
+	];
+
+	/**
+	 * @var array $parsedQueryString
+	 * 
+	 * The query string in array form
+	 */
+	protected $parsedQueryString;
+	
+	/**
+	 * The constructor, needs a parsed query string to be processed later.
+	 * 
+	 * @param array $parsedQueryString
+	 */
+	public function __construct(array $parsedQueryString){
+		$this->parsedQueryString = $parsedQueryString;
+	}
 
 	/**
 	 * Convert a string with comma into an array.
 	 * If the input is "1,2", the output is [1, 2]
 	 * Should there be no comma. Nothing happens
-	 * 
+	 *
 	 * @param  string $value 
 	 * @return array|mixed
 	 */
@@ -49,8 +65,10 @@ class QueryStringConverter {
 	}
 
 	/**
-	 * Extracts the first operator in a refined Query Value
-	 * 
+	 * Extracts the first operator in a refined Query Value.
+	 * Returns "in" or "=" when the first element is not
+	 * a valid operator. "in" for array and "=" for equal.
+	 *
 	 * @param  array  $value 
 	 * @return string
 	 */
@@ -62,20 +80,22 @@ class QueryStringConverter {
 			return static::VALID_OPERATORS[$value[0]];
 		}
 
-		//Were you looking for an array with the same content?
-		return '=';
+		//If the operator is still default
+		//and the value turns out to be an array
+		return is_array($value) ? 'in' : '=';
+
 	}
 
 	/**
 	 * Extracts the attribute value in a refined Query Value
 	 * 
-	 * @param  array  $value
-	 * @return mixed       
+	 * @param  array $value
+	 * @return mixed
 	 */
 	protected static function getValueInQueryValue(array $value){
 
 		//Should the first element of an item belong to
-		//VALID_OPERATORS... 
+		//VALID_OPERATORS...
 		if (array_key_exists($value[0], static::VALID_OPERATORS)) {
 
 			$value = array_slice($value, 1);
@@ -99,8 +119,9 @@ class QueryStringConverter {
 	 * 
 	 * @return array
 	 */
-	public static function convert(array $parsedQueryString){
+	public function convert(){
 
+		$parsedQueryString = $this->parsedQueryString;
 		$searchFilterItems = [];
 
 		foreach ($parsedQueryString as $key => $queryValue) {
@@ -112,7 +133,7 @@ class QueryStringConverter {
 			//The default operator: it shall not be changed unless
 			//the query value turns out to be an array whose first element
 			//corresponds to a key in VALID_OPERATORS
-			$operator = '=';			
+			$operator = '=';
 
 			if ( is_array($value) ) {
 				$operator = self::getOperatorInQueryValue($value);
@@ -122,10 +143,6 @@ class QueryStringConverter {
 			// Should the value be a string that can be a number, convert it.
 			$value = is_numeric($value) ? $value + 0 : $value;
 			
-			//If the operator is still default  
-			//and the value turns out to be an array
-			$operator = is_array($value) && $operator === '=' ? 'in' : $operator;
-
 			//"sort" is a special item in a search filter and it is always
 			//an array. If your need says otherwise, it's up to you.
 			$value = $key === 'sort' && ! is_array($value) ? [ $value ] : $value;
