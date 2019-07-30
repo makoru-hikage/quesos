@@ -31,7 +31,9 @@ Array
 ```
 3. Use the tool itself.
 ```
-$finishedProduct = QueryStringConverter::convert($parsedUrlQuery);
+$test = new QueryStringConverter($parsedUrlQuery);
+
+$finishedProduct = $test->convert();
 
 print_r($finishedProduct, true);
 ```
