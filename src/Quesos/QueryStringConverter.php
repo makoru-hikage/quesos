@@ -26,6 +26,22 @@ class QueryStringConverter {
     ];
 
 	/**
+	 * @var array $parsedQueryString
+	 * 
+	 * The query string in array form
+	 */
+	protected $parsedQueryString;
+	
+	/**
+	 * The constructor, needs a parsed query string to be processed later.
+	 * 
+	 * @param array $parsedQueryString
+	 */
+	public function __construct(array $parsedQueryString){
+		$this->parsedQueryString = $parsedQueryString;
+	}
+
+	/**
 	 * Convert a string with comma into an array.
 	 * If the input is "1,2", the output is [1, 2]
 	 * Should there be no comma. Nothing happens
