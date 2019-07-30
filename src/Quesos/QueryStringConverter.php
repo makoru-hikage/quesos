@@ -65,7 +65,9 @@ class QueryStringConverter {
 	}
 
 	/**
-	 * Extracts the first operator in a refined Query Value
+	 * Extracts the first operator in a refined Query Value.
+	 * Returns "in" or "=" when the first element is not
+	 * a valid operator. "in" for array and "=" for equal.
 	 *
 	 * @param  array  $value 
 	 * @return string
@@ -78,8 +80,10 @@ class QueryStringConverter {
 			return static::VALID_OPERATORS[$value[0]];
 		}
 
-		//Were you looking for an array with the same content?
-		return '=';
+		//If the operator is still default
+		//and the value turns out to be an array
+		return is_array($value) ? 'in' : '=';
+
 	}
 
 	/**
@@ -139,10 +143,6 @@ class QueryStringConverter {
 			// Should the value be a string that can be a number, convert it.
 			$value = is_numeric($value) ? $value + 0 : $value;
 			
-			//If the operator is still default
-			//and the value turns out to be an array
-			$operator = is_array($value) && $operator === '=' ? 'in' : $operator;
-
 			//"sort" is a special item in a search filter and it is always
 			//an array. If your need says otherwise, it's up to you.
 			$value = $key === 'sort' && ! is_array($value) ? [ $value ] : $value;
